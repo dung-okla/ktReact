@@ -27,7 +27,7 @@ export const postMethor = async (url:String,body:any)=>{
     console.log(e)
   }
 }
-export const deleteMethor = async (url:String,id:Number)=>{
+export const deleteMethor = async (url:string,id:number)=>{
   try{
     const response = await fetch(`http://localhost:3000/${url}/${id}`,{
       method:'DELETE'

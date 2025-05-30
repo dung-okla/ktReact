@@ -25,17 +25,18 @@ export default function () {
   const [value, setValue] = useState({});
   const saveProduct=()=>{
     console.log(value)
-    const data = {...value,id:product.length+1}
+    const data = {...value,id:String(Math.max(...product.map(p => Number(p.id)+1)))}
     setProduct([...product,data])
     setValue({})
     setOpen(false)
     postMethor('products',data)
   }
-  const deleteProduct=(index)=>{
+  const deleteProduct=(id,index)=>{
+    console.log(index)
+    deleteMethor('products',id)
 
     product.splice(index,1)
     setProduct([...product])
-    deleteMethor('products',index)
   }
   const addProduct=()=> setOpen(true)
 
@@ -126,7 +127,7 @@ console.log(product)
               <TableCell >{row.name}</TableCell>
               <TableCell >{row.price}</TableCell>
               <TableCell >{row.remaining}</TableCell>
-              <TableCell ><DeleteIcon onClick={()=>deleteProduct(index)}/></TableCell>
+              <TableCell ><DeleteIcon onClick={()=> deleteProduct(row.id,index)}/></TableCell>
             </TableRow>
           ))}
         </TableBody>
