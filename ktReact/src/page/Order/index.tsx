@@ -70,6 +70,7 @@ export default function () {
   return (
 
     <>
+      <h1>Order</h1>
       <Button variant="contained" onClick={addProduct}>add</Button>
       <Dialog
         open={open}

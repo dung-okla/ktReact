@@ -56,6 +56,7 @@ console.log(product)
   return (
 
 <>
+  <h1>Product</h1>
     <Button variant="contained" onClick={addProduct}>add</Button>
   <Dialog
     open={open}
