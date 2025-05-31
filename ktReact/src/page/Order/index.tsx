@@ -24,10 +24,15 @@ export default function () {
 
 
   const save = () => {
-    console.log(value.product_id['price'],value.quatity)
-    const data = {...value, id: String(Math.max(...order.map(p => Number(p.id)+1))),amount:value.quantity * value.product_id['price']}
+
+    console.log(value)
+    const data = {...value, id: String(Math.max(...order.map(p => Number(p.id)+1))),amount:value.quantity * value.product_id['price'],
+    }
+    // @ts-ignore
     setOrder([...order, data])
-    data.product_id=data.product_id["id"]
+    // @ts-ignore
+    data.product_id=data.product_id.id
+    // @ts-ignore
     data.date=new Date().toLocaleDateString("en-US")
     postMethor('order', data)
     setValue({})
@@ -48,10 +53,11 @@ export default function () {
       const reponse2 = await getMethor('products')
 
       const obj = {}
-      reponse2.map((row) => {
+      reponse2.map((row:any) => {
+        // @ts-ignore
         obj[row.id] = row
       })
-     reponse.map((row) => {
+     reponse.map((row:any) => {
         row.product_id = obj[row.product_id]
       })
 
@@ -67,6 +73,7 @@ export default function () {
   }, []);
 
 
+  // @ts-ignore
   return (
 
     <>
@@ -90,6 +97,7 @@ export default function () {
             const product_id=product[index]
 
               setValue({...value,product_id:product_id})
+
               console.log(value)
 
             }}
@@ -125,7 +133,11 @@ export default function () {
             </TableRow>
           </TableHead>
           <TableBody>
-            {order.map((row, index) => (
+            {
+
+
+
+              order.map((row, index) => (
               <TableRow
                 key={row.id}
                 sx={{'&:last-child td, &:last-child th': {border: 0}}}

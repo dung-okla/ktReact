@@ -30,16 +30,9 @@
     },
     {
       "id": "3",
-      "product_id": "2",
-      "quantity": 4,
-      "amount": 32000,
-      "date": "5/31/2025"
-    },
-    {
-      "id": "4",
       "product_id": "1",
-      "quantity": 3,
-      "amount": 60000,
+      "quantity": 8,
+      "amount": 160000,
       "date": "5/31/2025"
     }
   ]
